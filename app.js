@@ -4,6 +4,7 @@ var bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 const config = require('./config')
 var User = require('./models/User')
+var Home = require('./models/Home')
 
 var connection = "mongodb://" + config.username + ":" + config.password + "@ds147518.mlab.com:47518/clickdecisions"
 mongoose.connect(connection)
@@ -29,9 +30,19 @@ app.post('/user', function(req, res){
     password: req.body.password
   })
 
+  var newHome = Home({
+    name: req.body.home_name,
+    password: req.body.home_password
+  })
+
   newUser.save(function(err){
     if (err) throw err;
     console.log('User created!');
+  })
+
+  newHome.save(function(err){
+    if (err) throw err;
+    console.log('Home created!');
   })
 })
 
