@@ -1,0 +1,22 @@
+doctype
+html
+  head
+    title Click Decisions
+    link(rel='stylesheet', type='text/css', href='/css/main.css')
+    // <script src="js/jquery.js"></script>
+    link(href='https://fonts.googleapis.com/css?family=Raleway:400,700,900', rel='stylesheet')
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css', integrity='sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm', crossorigin='anonymous')
+    title= "Click Decisions"
+  body
+    form(action='/user', method='POST')
+      input(type='text', placeholder="name", name="name") 
+      br
+      input(type='text', placeholder="username", name="username") 
+      br
+      input(type='password', placeholder="password", name="password") 
+      br
+      input(type='text', placeholder="home name", name="home_name") 
+      br
+      input(type='text', placeholder="home password", name="home_password") 
+      br
+      input(type='submit', value="Add User")

@@ -25,6 +25,10 @@ app.get('/', function(req, res){
   res.render('index')
 });
 
+app.get('/user', function(req, res){
+  res.render('user')
+})
+
 app.post('/user', function(req, res){
   console.log(req.body)
   var newUser = User({
