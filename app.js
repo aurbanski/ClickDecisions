@@ -3,6 +3,8 @@ var app = express()
 var bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 const config = require('./config')
+const path = require('path');
+
 var User = require('./models/User')
 
 var connection = "mongodb://" + config.username + ":" + config.password + "@ds147518.mlab.com:47518/clickdecisions"
@@ -16,6 +18,7 @@ db.once('open', function(){
 app.use(bodyParser.urlencoded({extended: true}))
 app.set('views', './views')
 app.set('view engine', 'pug')
+app.use(express.static(path.join(__dirname, 'Public')))
 
 app.get('/', function(req, res){
   res.render('index')
