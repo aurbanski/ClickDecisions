@@ -1,0 +1,19 @@
+{
+  "name": "clickdecisions",
+  "version": "1.0.0",
+  "description": "This is an app for the hackathon that uses a pi to get group votes for IOT",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aurbanski/ClickDecisions.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aurbanski/ClickDecisions/issues"
+  },
+  "homepage": "https://github.com/aurbanski/ClickDecisions#readme"
+}
