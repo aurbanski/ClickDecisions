@@ -3,6 +3,7 @@ var app = express()
 var bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 const config = require('./config')
+var User = require('./models/User')
 
 var connection = "mongodb://" + config.username + ":" + config.password + "@ds147518.mlab.com:47518/clickdecisions"
 mongoose.connect(connection)
@@ -22,6 +23,16 @@ app.get('/', function(req, res){
 
 app.post('/user', function(req, res){
   console.log(req.body)
+  var newUser = User({
+    name: req.body.name,
+    username: req.body.username,
+    password: req.body.password
+  })
+
+  newUser.save(function(err){
+    if (err) throw err;
+    console.log('User created!');
+  })
 })
 
 app.listen(3000);
