@@ -17,7 +17,7 @@ app.set('views', './views')
 app.set('view engine', 'pug')
 
 app.get('/', function(req, res){
-  res.render('layout')
+  res.render('index')
 });
 
 app.post('/user', function(req, res){
