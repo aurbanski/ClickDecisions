@@ -1,0 +1,131 @@
+body{
+	background-color: #f2f2f2;
+	font-family: 'Raleway', sans-serif;
+}
+
+h1{
+	display: none;
+}
+
+header img{
+	width: 250px;
+	padding: 10px;
+}
+
+h2{
+	float: right;
+	position: absolute;
+	top: 0;
+	right: 10px;
+}
+
+#notification{
+	float: right;
+	position: relative;
+	top: -120px;
+	padding-left: 10px;
+}
+
+#notif{
+	width: 40px;
+	position: absolute;
+	right: 20px;
+}
+
+#houseName{
+	color: #686868;
+	font-weight: 700;
+	position: absolute;
+}
+
+#box{
+	text-align: center;
+	color: white;
+	width: 200px;
+	position: relative;
+	float: right;
+	top: 57px;
+}
+
+#notifHead{
+	font-weight: 700;
+	text-transform: uppercase;
+	font-size: 1.3em;
+}
+
+.speech-bubble {
+	position: relative;
+	background: #FA6F12;
+	border-radius: .4em;
+	margin-right: 5px;
+	z-index: 3;
+}
+
+.speech-bubble:after {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 50%;
+	width: 0;
+	height: 0;
+	border: 15px solid transparent;
+	border-bottom-color: #FA6F12;
+	border-top: 0;
+	margin-left: 50px;
+	margin-top: -15px;
+	z-index: 3;
+}
+
+h4{
+	color: #686868;
+}
+
+h3{
+	font-weight: 400;
+}
+
+#poll{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	text-align: center;
+}
+
+#options{
+	display:inline-block;
+	width: 380px;
+	/*float: right;*/
+}
+
+.line{
+	display: inline-block;
+	float: left;
+}
+
+.profPic{
+	width: 40px;
+	margin: 15px 10px 15px 10px;
+	float: right;
+	display: inline-block;
+}
+
+.pollOpt{
+	float: right;
+	padding: 10px;
+	width: 130px;
+	display: inline-block;
+	background-color: #B7B7B7;
+	/*width: 10%;*/
+}
+
+.voteNum{
+	float: right;
+	color: white;
+	width: 10px;
+	text-align: center;
+	padding:10px 15px 10px 15px;
+	margin-left: 10px;
+	background-color: #FA6F12;
+	/*display: inline-block;*/
+}
