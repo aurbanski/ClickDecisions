@@ -5,6 +5,8 @@ const mongoose = require('mongoose')
 const config = require('./config')
 const path = require('path');
 const _ = require('lodash')
+var session = require('express-session');
+var cookieParser = require('cookie-parser');
 
 var User = require('./models/User')
 var Home = require('./models/Home')
@@ -17,13 +19,16 @@ db.once('open', function(){
   console.log("DB connected")
 })
 
+app.use(cookieParser());
+app.use(session({secret: "KanyeWest"}));
+
 app.use(bodyParser.urlencoded({extended: true}))
 app.set('views', './views')
 app.set('view engine', 'pug')
 app.use(express.static(path.join(__dirname, 'Public')))
 
 app.get('/', function(req, res){
-  res.render('index')
+  res.render('index', {session: req.session.user})
 });
 
 app.get('/user', function(req, res){
@@ -32,6 +37,7 @@ app.get('/user', function(req, res){
 
 app.post('/user', function(req, res){
   console.log(req.body)
+
   var newUser = User({
     name: req.body.name,
     username: req.body.username,
@@ -73,6 +79,7 @@ app.post('/user', function(req, res){
 
   newUser.save(function(err){
     if (err) throw err;
+    // res.redirect('/user')
     console.log('User created!');
   })
 
@@ -80,7 +87,8 @@ app.post('/user', function(req, res){
   //   if (err) throw err;
   //   console.log('Home created!');
   // })
-  res.redirect('/user')
+  req.session.user = newUser;
+  res.redirect('/')
 })
 
 app.listen(3000);
