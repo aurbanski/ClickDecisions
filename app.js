@@ -4,6 +4,7 @@ var bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 const config = require('./config')
 const path = require('path');
+const _ = require('lodash')
 
 var User = require('./models/User')
 var Home = require('./models/Home')
@@ -37,20 +38,49 @@ app.post('/user', function(req, res){
     password: req.body.password
   })
 
-  var newHome = Home({
-    name: req.body.home_name,
-    password: req.body.home_password
+  var checkHome = Home.find({ name: req.body.home_name }, function(err, home){
+    if (err) throw err;
+    console.log("🐉")
+    console.log(home[0])
+    console.log(_.isEmpty(home[0]))
+    if (_.isEmpty(home[0])){
+      var newHome = Home({
+        name: req.body.home_name,
+        password: req.body.home_password,
+        members: [req.body.username]
+      })
+
+      newHome.save(function(err){
+        if (err) throw err;
+        console.log('Home created1!');
+      })
+    } else {
+      console.log("🔥")
+      console.log(home)
+      home[0].members.push(req.body.username)
+      home[0].save(function(err){
+        if (err) throw err;
+        console.log('Home created!2');
+      })
+    }
+    console.log(home[0])
   })
+
+  // var newHome = Home({
+  //   name: req.body.home_name,
+  //   password: req.body.home_password
+  // })
 
   newUser.save(function(err){
     if (err) throw err;
     console.log('User created!');
   })
 
-  newHome.save(function(err){
-    if (err) throw err;
-    console.log('Home created!');
-  })
+  // newHome.save(function(err){
+  //   if (err) throw err;
+  //   console.log('Home created!');
+  // })
+  res.redirect('/user')
 })
 
 app.listen(3000);
